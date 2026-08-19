@@ -1,0 +1,666 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================
+   MAP
+========================= */
+
+#map {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 62px;
+
+    background: #8e2927;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 42px 0 100px;
+
+    z-index: 1000;
+
+    color: white;
+}
+
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.brand-logo {
+    width: 36px;
+    height: 36px;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* NAVIGATION */
+
+.navigation {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 42px;
+}
+
+.navigation a {
+    position: relative;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.navigation a.active::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 15px;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: white;
+}
+
+
+/* =========================
+   LEFT LAYER PANEL
+========================= */
+
+.layer-panel {
+    position: absolute;
+
+    top: 72px;
+    left: 18px;
+
+    width: 267px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 16px;
+
+    padding: 16px 14px 18px;
+
+    z-index: 900;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 14px;
+}
+
+.layer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.layer-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.layer-row input {
+    width: 15px;
+    height: 15px;
+
+    accent-color: #123e54;
+}
+
+.section-divider {
+    height: 1px;
+
+    background: #e7e7e7;
+
+    margin: 13px 0;
+}
+
+.models-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.collapse-icon {
+    font-size: 18px;
+}
+
+.model-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+    padding-left: 5px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    position: absolute;
+
+    top: 72px;
+    left: 292px;
+
+    width: 588px;
+    height: 40px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 14px;
+
+    z-index: 900;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.search-icon {
+    font-size: 22px;
+
+    color: #687888;
+
+    margin-right: 10px;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    font-size: 12px;
+
+    color: #34495e;
+}
+
+.search-box input::placeholder {
+    color: #9aaabd;
+}
+
+
+/* =========================
+   BASEMAP SELECTOR
+========================= */
+
+.basemap-selector {
+    position: absolute;
+
+    top: 71px;
+    right: 18px;
+
+    width: 237px;
+    height: 55px;
+
+    background: white;
+
+    border-radius: 17px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    z-index: 900;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.14);
+
+    cursor: pointer;
+}
+
+.basemap-icon {
+    font-size: 19px;
+
+    color: #123e54;
+
+    margin-right: 12px;
+}
+
+.basemap-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    flex: 1;
+}
+
+.basemap-label {
+    color: #8da0b8;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.basemap-name {
+    color: #1d2733;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.basemap-arrow {
+    font-size: 18px;
+}
+
+
+/* =========================
+   AREA PANEL
+========================= */
+
+.area-panel {
+    position: absolute;
+
+    top: 164px;
+    right: 18px;
+
+    width: 237px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    z-index: 900;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.area-header {
+    height: 47px;
+
+    background: #a62e2b;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 11px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.area-header button {
+    border: none;
+
+    background: white;
+
+    color: #a62e2b;
+
+    border-radius: 6px;
+
+    padding: 7px 9px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.area-content {
+    padding: 14px 12px 11px;
+}
+
+.coordinate-title {
+    color: #9c302c;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 13px;
+}
+
+.coordinate-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-bottom: 9px;
+}
+
+.coordinate-group label,
+.coordinate-row label {
+    text-align: center;
+
+    color: #a33a37;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+.coordinate-group input,
+.coordinate-row input {
+    height: 26px;
+
+    border: 1px solid #dce2e8;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color: #71839b;
+
+    width: 100%;
+}
+
+.coordinate-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 9px;
+}
+
+.coordinate-row > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.area-footer {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 0 12px 12px;
+}
+
+.close-button,
+.download-button {
+    height: 27px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.close-button {
+    width: 55px;
+
+    color: #6e7a87;
+
+    background: #dfe3e8;
+}
+
+.download-button {
+    flex: 1;
+
+    color: #8ba0b7;
+
+    background: #d1dbe7;
+}
+
+.download-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.8;
+}
+
+
+/* =========================
+   MAP INFO
+========================= */
+
+.map-info {
+    position: absolute;
+
+    bottom: 8px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    height: 42px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    z-index: 900;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.18);
+
+    gap: 20px;
+}
+
+.map-info > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.map-info span {
+    font-size: 7px;
+
+    color: #8496aa;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.map-info strong {
+    font-size: 9px;
+
+    color: #334353;
+
+    font-weight: 600;
+}
+
+.scale-container {
+    min-width: 65px;
+}
+
+.scale-bar {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.scale-line {
+    width: 31px;
+
+    height: 3px;
+
+    background: #283a4b;
+
+    border-left: 1px solid #283a4b;
+    border-right: 1px solid #283a4b;
+}
+
+
+/* =========================
+   LEAFLET OVERRIDES
+========================= */
+
+.leaflet-control-zoom {
+    display: none;
+}
+
+.leaflet-control-attribution {
+    font-size: 8px;
+
+    background: rgba(255,255,255,0.75);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .search-box {
+        left: 300px;
+        width: 40%;
+    }
+
+    .navigation {
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .layer-panel {
+        width: 220px;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .area-panel {
+        width: 220px;
+    }
+
+    .topbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .navigation {
+        gap: 12px;
+    }
+
+    .navigation a {
+        font-size: 12px;
+    }
+}

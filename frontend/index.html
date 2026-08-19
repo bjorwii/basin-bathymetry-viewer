@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BASIN | Bathymetry Data Viewer</title>
+
+    <!-- =========================
+         LEAFLET
+    ========================== -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Leaflet Draw -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"
+    />
+
+    <!-- =========================
+         CUSTOM CSS
+    ========================== -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                BASIN
+            </div>
+
+            <div class="brand-name">
+                BASIN
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#" class="active">
+                Map
+            </a>
+
+            <a href="#">
+                Project
+            </a>
+
+            <a href="#">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAP
+    ========================== -->
+    <main id="map"></main>
+
+
+    <!-- =========================
+         LEFT PANEL
+    ========================== -->
+    <section class="layer-panel">
+
+        <div class="panel-title">
+            Layers
+        </div>
+
+
+        <!-- BASE DATA -->
+        <div class="layer-section">
+
+            <label class="layer-row">
+
+                <span>
+                    GEBCO
+                </span>
+
+                <input
+                    type="checkbox"
+                    id="gebco-toggle"
+                >
+
+            </label>
+
+
+            <label class="layer-row">
+
+                <span>
+                    MBES
+                </span>
+
+                <input
+                    type="checkbox"
+                    id="mbes-toggle"
+                >
+
+            </label>
+
+        </div>
+
+
+        <div class="section-divider"></div>
+
+
+        <!-- MODELS -->
+        <div class="models-header">
+
+            <span>
+                Models
+            </span>
+
+            <span class="collapse-icon">
+                ⌄
+            </span>
+
+        </div>
+
+
+        <div class="model-list">
+
+            <label class="layer-row">
+
+                <span>
+                    ESRGAN
+                </span>
+
+                <input
+                    type="checkbox"
+                    id="esrgan-toggle"
+                >
+
+            </label>
+
+
+            <label class="layer-row">
+
+                <span>
+                    SRGAN
+                </span>
+
+                <input type="checkbox">
+
+            </label>
+
+
+            <label class="layer-row">
+
+                <span>
+                    SR-RESNET
+                </span>
+
+                <input type="checkbox">
+
+            </label>
+
+
+            <label class="layer-row">
+
+                <span>
+                    SRCNN
+                </span>
+
+                <input type="checkbox">
+
+            </label>
+
+
+            <label class="layer-row">
+
+                <span>
+                    Pix2Pix
+                </span>
+
+                <input type="checkbox">
+
+            </label>
+
+
+            <label class="layer-row">
+
+                <span>
+                    Bicubic
+                </span>
+
+                <input type="checkbox">
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SEARCH
+    ========================== -->
+    <div class="search-box">
+
+        <span class="search-icon">
+            ⌕
+        </span>
+
+
+        <input
+            type="text"
+            placeholder="Search Location..."
+            id="search-input"
+        >
+
+    </div>
+
+
+    <!-- =========================
+         BASEMAP SELECTOR
+    ========================== -->
+    <div class="basemap-selector">
+
+        <div class="basemap-icon">
+            ◆
+        </div>
+
+
+        <div class="basemap-info">
+
+            <span class="basemap-label">
+                BASEMAP
+            </span>
+
+            <span class="basemap-name">
+                Satellite
+            </span>
+
+        </div>
+
+
+        <span class="basemap-arrow">
+            ⌄
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         SELECT AREA PANEL
+    ========================== -->
+    <section class="area-panel">
+
+        <div class="area-header">
+
+            <span>
+                Select Area
+            </span>
+
+
+            <button id="draw-button">
+                ⛶ Draw Area
+            </button>
+
+        </div>
+
+
+        <div class="area-content">
+
+            <div class="coordinate-title">
+                Coordinate
+            </div>
+
+
+            <!-- NORTH -->
+            <div class="coordinate-group">
+
+                <label>
+                    North
+                </label>
+
+
+                <input
+                    type="text"
+                    id="north"
+                    placeholder="North"
+                    readonly
+                >
+
+            </div>
+
+
+            <!-- WEST / EAST -->
+            <div class="coordinate-row">
+
+                <div>
+
+                    <label>
+                        West
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="west"
+                        placeholder="West"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        East
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="east"
+                        placeholder="East"
+                        readonly
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- SOUTH -->
+            <div class="coordinate-group">
+
+                <label>
+                    South
+                </label>
+
+
+                <input
+                    type="text"
+                    id="south"
+                    placeholder="South"
+                    readonly
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- AREA FOOTER -->
+        <div class="area-footer">
+
+            <button
+                class="close-button"
+                id="close-area"
+            >
+                × Close
+            </button>
+
+
+            <button
+                class="download-button"
+                id="download-button"
+                disabled
+            >
+                ⇩ Download
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAP INFO
+    ========================== -->
+    <div class="map-info">
+
+        <!-- LATITUDE -->
+        <div>
+
+            <span>
+                LAT
+            </span>
+
+            <strong id="map-lat">
+                -2.482133°
+            </strong>
+
+        </div>
+
+
+        <!-- LONGITUDE -->
+        <div>
+
+            <span>
+                LON
+            </span>
+
+            <strong id="map-lon">
+                118.015137°
+            </strong>
+
+        </div>
+
+
+        <!-- ZOOM -->
+        <div>
+
+            <span>
+                ZOOM
+            </span>
+
+            <strong id="map-zoom">
+                5
+            </strong>
+
+        </div>
+
+
+        <!-- SCALE -->
+        <div class="scale-container">
+
+            <span>
+                SCALE
+            </span>
+
+
+            <div class="scale-bar">
+
+                <div class="scale-line"></div>
+
+                <span>
+                    300 km
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT LIBRARIES
+    =================================================== -->
+
+    <!-- Leaflet -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- GeoRaster
+         Used to parse GeoTIFF into GeoRaster format
+    -->
+    <script
+        src="https://unpkg.com/georaster">
+    </script>
+
+
+    <!-- GeoRaster Layer for Leaflet
+         Used to render GeoTIFF on Leaflet
+    -->
+    <script
+        src="https://unpkg.com/georaster-layer-for-leaflet@4.1.2/dist/georaster-layer-for-leaflet.min.js">
+    </script>
+
+    <!-- Leaflet Draw -->
+    <script
+        src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js">
+    </script>
+
+
+    <!-- ==================================================
+         APPLICATION
+        =================================================== -->
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
