@@ -12,8 +12,18 @@ const API_BASE_URL = CONFIG.API_BASE_URL;
 const CLIP_ENDPOINT =
     `${API_BASE_URL}/clip`;
 
+/*
+ * Preview PNG sekarang berasal dari GitHub Pages,
+ * bukan dari backend / Cloudflare.
+ *
+ * document.baseURI:
+ * https://bjorwii.github.io/basin-bathymetry-viewer/
+ *
+ * menghasilkan:
+ * https://bjorwii.github.io/basin-bathymetry-viewer/preview
+ */
 const PREVIEW_BASE_URL =
-    "/basin-bathymetry-viewer/preview";
+    new URL("preview/", document.baseURI).href.replace(/\/$/, "");
 
 
 /* ============================================================
@@ -433,10 +443,6 @@ function getTileBounds(
         levelInfo.height;
 
 
-    /*
-     * Geographic resolution at this preview level.
-     */
-
     const lonPerPixel =
         (
             rasterBounds.east -
@@ -453,9 +459,7 @@ function getTileBounds(
 
 
     /*
-     * Pixel origin.
-     *
-     * PNG tile rows start from the top.
+     * PNG tile origin is top-left.
      */
 
     const pixelX =
@@ -468,10 +472,7 @@ function getTileBounds(
 
 
     /*
-     * Actual tile dimensions.
-     *
-     * Important for edge tiles that are smaller
-     * than 1024 × 1024.
+     * Edge tiles may be smaller than 1024 × 1024.
      */
 
     const remainingWidth =
@@ -506,7 +507,7 @@ function getTileBounds(
 
 
     /*
-     * Geographic extent of tile.
+     * Geographic extent.
      */
 
     const west =
@@ -518,7 +519,6 @@ function getTileBounds(
         west +
         tileWidth *
         lonPerPixel;
-
 
     const north =
         rasterBounds.north -
@@ -575,6 +575,14 @@ function createImageTile(
     }
 
 
+    /*
+     * Example:
+     *
+     * https://bjorwii.github.io/
+     * basin-bathymetry-viewer/
+     * preview/esrgan/z0/0_0.png
+     */
+
     const url =
         `${PREVIEW_BASE_URL}` +
         `/${config.path}` +
@@ -585,8 +593,8 @@ function createImageTile(
     /*
      * ImageOverlay is intentional.
      *
-     * The PNG previews are geographic EPSG:4326
-     * images and are NOT normal Web Mercator XYZ tiles.
+     * These PNGs are geographic EPSG:4326
+     * images and are not Web Mercator XYZ tiles.
      */
 
     const imageOverlay =
@@ -784,8 +792,7 @@ function getPreviewLevel(
 ) {
 
     /*
-     * z0:
-     * lowest resolution
+     * z0 = lowest resolution
      */
 
     if (
@@ -798,8 +805,7 @@ function getPreviewLevel(
 
 
     /*
-     * z1:
-     * medium resolution
+     * z1 = medium resolution
      */
 
     if (
@@ -812,8 +818,7 @@ function getPreviewLevel(
 
 
     /*
-     * z2:
-     * highest available preview resolution
+     * z2 = highest available resolution
      */
 
     return 2;
@@ -851,7 +856,7 @@ function showPreviewLevel(
 
 
     /*
-     * Remove old level.
+     * Remove previous level.
      */
 
     if (
@@ -880,7 +885,7 @@ function showPreviewLevel(
 
 
     /*
-     * Add new level.
+     * Add current level.
      */
 
     if (
@@ -1819,8 +1824,12 @@ async function startApplication() {
      *
      * Browser only requests PNG preview tiles.
      *
-     * Download still uses the original TIFF
-     * through FastAPI /clip.
+     * Preview:
+     *     GitHub Pages
+     *
+     * Download:
+     *     FastAPI /clip
+     *     through Cloudflare
      */
 
 
@@ -1854,7 +1863,6 @@ async function startApplication() {
 
     console.log(
         "===================================="
-
     );
 
 }
