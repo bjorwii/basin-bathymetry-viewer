@@ -13,7 +13,7 @@ const CLIP_ENDPOINT =
     `${API_BASE_URL}/clip`;
 
 const PREVIEW_BASE_URL =
-    `${API_BASE_URL}/preview`;
+    "/basin-bathymetry-viewer/preview";
 
 
 /* ============================================================
