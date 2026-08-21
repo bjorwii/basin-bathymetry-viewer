@@ -1,83 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>BASIN | Bathymetry Data Viewer</title>
+
 
     <!-- =========================
          LEAFLET
     ========================== -->
+
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
+    >
 
-    <!-- Leaflet Draw -->
+
+    <!-- =========================
+         LEAFLET DRAW
+    ========================== -->
+
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"
-    />
+    >
+
 
     <!-- =========================
          CUSTOM CSS
     ========================== -->
-    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
 
+
 <body>
-
-    <!-- =========================
-         HEADER
-    ========================== -->
-    <header class="topbar">
-
-        <div class="brand">
-
-            <div class="brand-logo">
-                BASIN
-            </div>
-
-            <div class="brand-name">
-                BASIN
-            </div>
-
-        </div>
-
-
-        <nav class="navigation">
-
-            <a href="#">
-                Home
-            </a>
-
-            <a href="#" class="active">
-                Map
-            </a>
-
-            <a href="#">
-                Project
-            </a>
-
-            <a href="#">
-                Contact
-            </a>
-
-        </nav>
-
-    </header>
 
 
     <!-- =========================
          MAP
     ========================== -->
+
     <main id="map"></main>
 
 
     <!-- =========================
          LEFT PANEL
     ========================== -->
+
     <section class="layer-panel">
 
         <div class="panel-title">
@@ -86,6 +67,7 @@
 
 
         <!-- BASE DATA -->
+
         <div class="layer-section">
 
             <label class="layer-row">
@@ -122,6 +104,7 @@
 
 
         <!-- MODELS -->
+
         <div class="models-header">
 
             <span>
@@ -211,27 +194,9 @@
 
 
     <!-- =========================
-         SEARCH
-    ========================== -->
-    <div class="search-box">
-
-        <span class="search-icon">
-            ⌕
-        </span>
-
-
-        <input
-            type="text"
-            placeholder="Search Location..."
-            id="search-input"
-        >
-
-    </div>
-
-
-    <!-- =========================
          BASEMAP SELECTOR
     ========================== -->
+
     <div class="basemap-selector">
 
         <div class="basemap-icon">
@@ -262,6 +227,7 @@
     <!-- =========================
          SELECT AREA PANEL
     ========================== -->
+
     <section class="area-panel">
 
         <div class="area-header">
@@ -286,6 +252,7 @@
 
 
             <!-- NORTH -->
+
             <div class="coordinate-group">
 
                 <label>
@@ -304,6 +271,7 @@
 
 
             <!-- WEST / EAST -->
+
             <div class="coordinate-row">
 
                 <div>
@@ -343,6 +311,7 @@
 
 
             <!-- SOUTH -->
+
             <div class="coordinate-group">
 
                 <label>
@@ -363,6 +332,7 @@
 
 
         <!-- AREA FOOTER -->
+
         <div class="area-footer">
 
             <button
@@ -389,9 +359,11 @@
     <!-- =========================
          MAP INFO
     ========================== -->
+
     <div class="map-info">
 
         <!-- LATITUDE -->
+
         <div>
 
             <span>
@@ -406,6 +378,7 @@
 
 
         <!-- LONGITUDE -->
+
         <div>
 
             <span>
@@ -420,6 +393,7 @@
 
 
         <!-- ZOOM -->
+
         <div>
 
             <span>
@@ -434,6 +408,7 @@
 
 
         <!-- SCALE -->
+
         <div class="scale-container">
 
             <span>
@@ -461,37 +436,42 @@
     =================================================== -->
 
     <!-- Leaflet -->
+
     <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
 
 
-    <!-- GeoRaster
-         Used to parse GeoTIFF into GeoRaster format
-    -->
+    <!-- GeoRaster -->
+
     <script
-        src="https://unpkg.com/georaster">
-    </script>
+        src="https://unpkg.com/georaster"
+    ></script>
 
 
-    <!-- GeoRaster Layer for Leaflet
-         Used to render GeoTIFF on Leaflet
-    -->
+    <!-- GeoRaster Layer for Leaflet -->
+
     <script
-        src="https://unpkg.com/georaster-layer-for-leaflet@4.1.2/dist/georaster-layer-for-leaflet.min.js">
-    </script>
+        src="https://unpkg.com/georaster-layer-for-leaflet@4.1.2/dist/georaster-layer-for-leaflet.min.js"
+    ></script>
+
 
     <!-- Leaflet Draw -->
+
     <script
-        src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js">
-    </script>
+        src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"
+    ></script>
 
 
     <!-- ==================================================
          APPLICATION
-        =================================================== -->
+    =================================================== -->
+
     <script src="js/config.js"></script>
+
     <script src="js/app.js"></script>
 
+
 </body>
+
 </html>

@@ -37,8 +37,7 @@ DATA_DIR = Path(r"C:\GEO-AI\BASIN_DATASETS")
 # OUTPUT DIRECTORY
 # ============================================================
 #
-# Folder ini hanya digunakan sebagai temporary workspace
-# untuk hasil clipping sebelum dikirim ke user.
+# Temporary clipping output.
 #
 
 OUTPUT_DIR = (
@@ -56,6 +55,10 @@ OUTPUT_DIR.mkdir(
 # ============================================================
 # PREVIEW DIRECTORY
 # ============================================================
+#
+# Preview sebenarnya sekarang dilayani oleh GitHub Pages.
+#
+# Struktur tetap dipertahankan untuk local/backend testing:
 #
 # bathymetry-viewer/
 # └── preview/
@@ -110,8 +113,59 @@ app = FastAPI(
 
 
 # ============================================================
+# CORS
+# ============================================================
+#
+# Frontend:
+# https://bjorwii.github.io/basin-bathymetry-viewer/
+#
+# Browser origin:
+# https://bjorwii.github.io
+#
+# Backend:
+# Cloudflare Quick Tunnel
+#
+# Tidak menggunakan cookie/session authentication,
+# sehingga allow_credentials tidak diperlukan.
+#
+
+app.add_middleware(
+
+    CORSMiddleware,
+
+    allow_origins=[
+        "https://bjorwii.github.io",
+    ],
+
+    allow_credentials=False,
+
+    allow_methods=[
+        "GET",
+        "POST",
+        "OPTIONS",
+    ],
+
+    allow_headers=[
+        "Content-Type",
+        "Accept",
+    ],
+
+    expose_headers=[
+        "Content-Disposition",
+    ],
+
+)
+
+
+# ============================================================
 # STATIC PREVIEW
 # ============================================================
+#
+# Tetap tersedia untuk local testing.
+#
+# Production frontend sekarang mengambil preview langsung
+# dari GitHub Pages.
+#
 
 app.mount(
 
@@ -122,25 +176,6 @@ app.mount(
     ),
 
     name="preview"
-
-)
-
-
-# ============================================================
-# CORS
-# ============================================================
-
-app.add_middleware(
-
-    CORSMiddleware,
-
-    allow_origins=["*"],
-
-    allow_credentials=True,
-
-    allow_methods=["*"],
-
-    allow_headers=["*"],
 
 )
 
@@ -373,11 +408,8 @@ def clip_raster(
     # ========================================================
 
     north = request.north
-
     south = request.south
-
     west = request.west
-
     east = request.east
 
 
@@ -804,7 +836,8 @@ def clip_raster(
 
 
             print(
-                "[CLIP] Temporary TIFF written successfully."
+                "[CLIP] Temporary TIFF "
+                "written successfully."
             )
 
             print(

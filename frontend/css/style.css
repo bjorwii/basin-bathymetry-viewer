@@ -1,3 +1,7 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
@@ -6,8 +10,10 @@ html,
 body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 
     font-family:
@@ -17,9 +23,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    MAP
-========================= */
+========================================================= */
 
 #map {
     position: absolute;
@@ -34,113 +40,14 @@ body {
 }
 
 
-/* =========================
-   TOPBAR
-========================= */
-
-.topbar {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 62px;
-
-    background: #8e2927;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 42px 0 100px;
-
-    z-index: 1000;
-
-    color: white;
-}
-
-
-/* BRAND */
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.brand-logo {
-    width: 36px;
-    height: 36px;
-
-    border: 2px solid white;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 8px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.brand-name {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-
-/* NAVIGATION */
-
-.navigation {
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 42px;
-}
-
-.navigation a {
-    position: relative;
-
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 14px;
-}
-
-.navigation a.active::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 15px;
-    left: 0;
-
-    width: 100%;
-    height: 2px;
-
-    background: white;
-}
-
-
-/* =========================
+/* =========================================================
    LEFT LAYER PANEL
-========================= */
+========================================================= */
 
 .layer-panel {
     position: absolute;
 
-    top: 72px;
+    top: 18px;
     left: 18px;
 
     width: 267px;
@@ -157,6 +64,7 @@ body {
         0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
+
 .panel-title {
     font-size: 14px;
     font-weight: 700;
@@ -164,11 +72,15 @@ body {
     margin-bottom: 14px;
 }
 
+
 .layer-section {
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
 }
+
 
 .layer-row {
     display: flex;
@@ -181,12 +93,14 @@ body {
     cursor: pointer;
 }
 
+
 .layer-row input {
     width: 15px;
     height: 15px;
 
     accent-color: #123e54;
 }
+
 
 .section-divider {
     height: 1px;
@@ -195,6 +109,7 @@ body {
 
     margin: 13px 0;
 }
+
 
 .models-header {
     display: flex;
@@ -208,9 +123,11 @@ body {
     margin-bottom: 10px;
 }
 
+
 .collapse-icon {
     font-size: 18px;
 }
+
 
 .model-list {
     display: flex;
@@ -223,66 +140,14 @@ body {
 }
 
 
-/* =========================
-   SEARCH
-========================= */
-
-.search-box {
-    position: absolute;
-
-    top: 72px;
-    left: 292px;
-
-    width: 588px;
-    height: 40px;
-
-    background: white;
-
-    border-radius: 15px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 14px;
-
-    z-index: 900;
-
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.12);
-}
-
-.search-icon {
-    font-size: 22px;
-
-    color: #687888;
-
-    margin-right: 10px;
-}
-
-.search-box input {
-    width: 100%;
-
-    border: none;
-    outline: none;
-
-    font-size: 12px;
-
-    color: #34495e;
-}
-
-.search-box input::placeholder {
-    color: #9aaabd;
-}
-
-
-/* =========================
+/* =========================================================
    BASEMAP SELECTOR
-========================= */
+========================================================= */
 
 .basemap-selector {
     position: absolute;
 
-    top: 71px;
+    top: 18px;
     right: 18px;
 
     width: 237px;
@@ -293,6 +158,7 @@ body {
     border-radius: 17px;
 
     display: flex;
+
     align-items: center;
 
     padding: 0 15px;
@@ -305,6 +171,7 @@ body {
     cursor: pointer;
 }
 
+
 .basemap-icon {
     font-size: 19px;
 
@@ -312,6 +179,7 @@ body {
 
     margin-right: 12px;
 }
+
 
 .basemap-info {
     display: flex;
@@ -323,6 +191,7 @@ body {
     flex: 1;
 }
 
+
 .basemap-label {
     color: #8da0b8;
 
@@ -333,6 +202,7 @@ body {
     letter-spacing: 1px;
 }
 
+
 .basemap-name {
     color: #1d2733;
 
@@ -341,19 +211,20 @@ body {
     font-weight: 700;
 }
 
+
 .basemap-arrow {
     font-size: 18px;
 }
 
 
-/* =========================
+/* =========================================================
    AREA PANEL
-========================= */
+========================================================= */
 
 .area-panel {
     position: absolute;
 
-    top: 164px;
+    top: 90px;
     right: 18px;
 
     width: 237px;
@@ -369,6 +240,7 @@ body {
     box-shadow:
         0 3px 12px rgba(0, 0, 0, 0.15);
 }
+
 
 .area-header {
     height: 47px;
@@ -388,6 +260,7 @@ body {
     font-weight: 700;
 }
 
+
 .area-header button {
     border: none;
 
@@ -406,9 +279,11 @@ body {
     cursor: pointer;
 }
 
+
 .area-content {
     padding: 14px 12px 11px;
 }
+
 
 .coordinate-title {
     color: #9c302c;
@@ -420,6 +295,7 @@ body {
     margin-bottom: 13px;
 }
 
+
 .coordinate-group {
     display: flex;
 
@@ -429,6 +305,7 @@ body {
 
     margin-bottom: 9px;
 }
+
 
 .coordinate-group label,
 .coordinate-row label {
@@ -440,6 +317,7 @@ body {
 
     font-weight: 700;
 }
+
 
 .coordinate-group input,
 .coordinate-row input {
@@ -460,6 +338,7 @@ body {
     width: 100%;
 }
 
+
 .coordinate-row {
     display: grid;
 
@@ -470,6 +349,7 @@ body {
     margin-bottom: 9px;
 }
 
+
 .coordinate-row > div {
     display: flex;
 
@@ -478,6 +358,7 @@ body {
     gap: 5px;
 }
 
+
 .area-footer {
     display: flex;
 
@@ -485,6 +366,7 @@ body {
 
     padding: 0 12px 12px;
 }
+
 
 .close-button,
 .download-button {
@@ -501,6 +383,7 @@ body {
     cursor: pointer;
 }
 
+
 .close-button {
     width: 55px;
 
@@ -508,6 +391,7 @@ body {
 
     background: #dfe3e8;
 }
+
 
 .download-button {
     flex: 1;
@@ -517,6 +401,7 @@ body {
     background: #d1dbe7;
 }
 
+
 .download-button:disabled {
     cursor: not-allowed;
 
@@ -524,9 +409,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    MAP INFO
-========================= */
+========================================================= */
 
 .map-info {
     position: absolute;
@@ -543,6 +428,7 @@ body {
     border-radius: 22px;
 
     display: flex;
+
     align-items: center;
 
     padding: 0 18px;
@@ -555,6 +441,7 @@ body {
     gap: 20px;
 }
 
+
 .map-info > div {
     display: flex;
 
@@ -562,6 +449,7 @@ body {
 
     gap: 3px;
 }
+
 
 .map-info span {
     font-size: 7px;
@@ -573,6 +461,7 @@ body {
     letter-spacing: 1px;
 }
 
+
 .map-info strong {
     font-size: 9px;
 
@@ -581,9 +470,11 @@ body {
     font-weight: 600;
 }
 
+
 .scale-container {
     min-width: 65px;
 }
+
 
 .scale-bar {
     display: flex;
@@ -592,6 +483,7 @@ body {
 
     gap: 5px;
 }
+
 
 .scale-line {
     width: 31px;
@@ -605,37 +497,25 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    LEAFLET OVERRIDES
-========================= */
+========================================================= */
 
 .leaflet-control-zoom {
     display: none;
 }
 
+
 .leaflet-control-attribution {
     font-size: 8px;
 
-    background: rgba(255,255,255,0.75);
+    background: rgba(255, 255, 255, 0.75);
 }
 
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
-
-@media (max-width: 900px) {
-
-    .search-box {
-        left: 300px;
-        width: 40%;
-    }
-
-    .navigation {
-        gap: 20px;
-    }
-
-}
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -643,24 +523,9 @@ body {
         width: 220px;
     }
 
-    .search-box {
-        display: none;
-    }
 
     .area-panel {
         width: 220px;
     }
 
-    .topbar {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .navigation {
-        gap: 12px;
-    }
-
-    .navigation a {
-        font-size: 12px;
-    }
 }
