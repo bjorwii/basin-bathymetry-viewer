@@ -1,4 +1,4 @@
 const CONFIG = {
     API_BASE_URL:
-        "https://wav-vegetarian-implications-preferences.trycloudflare.com"
+        "https://ons-votes-asbestos-violin.trycloudflare.com"
 };
