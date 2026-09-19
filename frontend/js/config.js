@@ -1,4 +1,4 @@
 const CONFIG = {
     API_BASE_URL:
-        "https://paradise-gates-connectors-playback.trycloudflare.com"
+        "https://prev-mud-warned-blocked.trycloudflare.com"
 };
