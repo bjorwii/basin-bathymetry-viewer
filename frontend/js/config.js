@@ -1,4 +1,4 @@
 const CONFIG = {
     API_BASE_URL:
-        "https://prev-mud-warned-blocked.trycloudflare.com"
+        "https://minerals-nurse-used-dictionaries.trycloudflare.com"
 };
